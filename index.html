@@ -21,14 +21,14 @@
 
   <body>
     <div id="root"></div>
-    <footer style="width: 100%; padding: 1rem; text-align: center; color: #64748b; font-size: 0.875rem;">
-      © 2026 Lynshelly Supplies Ltd. All rights reserved.
-    </footer>
     <script>
       const removeFooterTagline = () => {
-        document.querySelectorAll("span").forEach((span) => {
-          if (span.textContent.trim() === "Built with excellence in Kenya") {
-            span.remove();
+        document.querySelectorAll("*").forEach((element) => {
+          if (element.childElementCount === 0 && element.textContent.trim() === "Built with excellence in Kenya") {
+            element.remove();
+          }
+          if (element.childElementCount === 0 && element.textContent.trim() === "© 2026 Lynshelly Supplies Ltd. All rights reserved.") {
+            element.remove();
           }
         });
       };
