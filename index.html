@@ -28,7 +28,11 @@
             element.remove();
           }
           if (element.childElementCount === 0 && element.textContent.trim() === "© 2026 Lynshelly Supplies Ltd. All rights reserved.") {
-            element.remove();
+            element.style.position = "absolute";
+            element.style.left = "50%";
+            element.style.transform = "translateX(-50%)";
+            element.style.width = "max-content";
+            element.parentElement.style.position = "relative";
           }
         });
       };
