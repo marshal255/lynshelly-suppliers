@@ -33,6 +33,11 @@
             element.style.transform = "translateX(-50%)";
             element.style.width = "max-content";
             element.parentElement.style.position = "relative";
+            element.parentElement.style.width = "100%";
+            const footerControls = [...element.parentElement.children].find((child) => child !== element);
+            if (footerControls) {
+              footerControls.style.marginLeft = "auto";
+            }
           }
         });
       };
