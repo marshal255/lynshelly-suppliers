@@ -40,6 +40,31 @@
             }
           }
         });
+        const serviceNames = new Set([
+          "Stationery & Office Supplies",
+          "ICT & Electronic Equipment",
+          "Office Furniture & Fittings",
+          "Construction Materials",
+          "Laboratory Equipment",
+          "Food Supplies",
+          "Electrical & Plumbing"
+        ]);
+        document.querySelectorAll("li").forEach((item) => {
+          if (serviceNames.has(item.textContent.trim()) && !item.dataset.serviceLink) {
+            item.dataset.serviceLink = "true";
+            item.tabIndex = 0;
+            item.setAttribute("role", "link");
+            item.style.cursor = "pointer";
+            const goToServices = () => document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" });
+            item.addEventListener("click", goToServices);
+            item.addEventListener("keydown", (event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                goToServices();
+              }
+            });
+          }
+        });
       };
       new MutationObserver(removeFooterTagline).observe(document.body, { childList: true, subtree: true });
       removeFooterTagline();
